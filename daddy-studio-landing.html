@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fotos por Vallim — Fotografia de Casamentos & Ensaios | Mauá, SP</title>
+  <meta name="description" content="Fotografia de casamentos, retratos e ensaios de casal em Mauá e Grande ABC. Fotos por Vallim."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#f2ebe0; --bg2:#e8dece; --dark:#2b1f14; --coffee:#6b4226;
+      --caramel:#a0673a; --sand:#c9a87c; --cream:#faf6ef; --muted:#7a6a58; --wpp:#25d366;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(242,235,224,.93); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(160,103,58,.18);
+    }
+    .logo { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; color:var(--dark); text-decoration:none; }
+    .logo span { color:var(--caramel); }
+    .nav-links { display:flex; align-items:center; gap:2rem; }
+    .nav-links a { font-size:.72rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .nav-links a:hover { color:var(--caramel); }
+    .nav-cta { color:var(--cream)!important; background:var(--coffee); padding:.55rem 1.3rem; border-radius:2px; transition:background .2s; }
+    .nav-cta:hover { background:var(--caramel)!important; }
+
+    .hero { min-height:100svh; position:relative; display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:5rem; overflow:hidden; }
+    .hero-bg {
+      position:absolute; inset:0; z-index:0;
+      background: linear-gradient(to bottom,rgba(43,31,20,.1) 0%,rgba(43,31,20,.52) 50%,rgba(43,31,20,.88) 100%), radial-gradient(ellipse 90% 110% at 60% 35%,#c8a07a 0%,#7a5030 35%,#3d2010 65%,#1e1008 100%);
+    }
+    .hero-bg::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E"); opacity:.5; mix-blend-mode:overlay; }
+    .hero-content { position:relative; z-index:1; max-width:860px; padding:0 3rem; }
+    .hero-eyebrow { font-size:.7rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:var(--sand); margin-bottom:1.4rem; }
+    h1 { font-family:'Playfair Display',serif; font-size:clamp(3.2rem,7vw,6.5rem); font-weight:400; line-height:1.04; color:var(--cream); margin-bottom:1.6rem; }
+    h1 em { font-style:italic; color:var(--sand); }
+    .hero-sub { font-size:1.05rem; line-height:1.7; color:rgba(250,246,239,.65); max-width:48ch; margin-bottom:2.8rem; font-weight:300; }
+    .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+    .btn-primary { display:inline-flex; align-items:center; gap:.7rem; background:var(--wpp); color:#fff; font-size:.8rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; padding:1rem 2rem; border-radius:2px; transition:opacity .2s,transform .15s; }
+    .btn-primary:hover { opacity:.88; transform:translateY(-2px); }
+    .btn-secondary { display:inline-flex; align-items:center; gap:.7rem; border:1px solid rgba(201,168,124,.5); color:var(--sand); font-size:.8rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; padding:1rem 2rem; border-radius:2px; transition:border-color .2s,color .2s; }
+    .btn-secondary:hover { border-color:var(--sand); color:var(--cream); }
+    .hero-scroll { position:absolute; bottom:1.8rem; right:3rem; z-index:1; font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(201,168,124,.45); writing-mode:vertical-rl; }
+
+    section { padding:6rem 3rem; }
+    .section-label { font-size:.68rem; font-weight:500; letter-spacing:.26em; text-transform:uppercase; color:var(--caramel); margin-bottom:.9rem; display:block; }
+    h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.8vw,3.2rem); font-weight:400; line-height:1.1; color:var(--dark); }
+    h2 em { font-style:italic; color:var(--caramel); }
+
+    /* ABOUT */
+    .about { background:var(--dark); }
+    .about .section-label { color:var(--sand); }
+    .about-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .about h2 { color:var(--cream); margin-bottom:2rem; }
+    .about-text p { font-size:1rem; line-height:1.85; color:rgba(250,246,239,.65); margin-bottom:1.2rem; font-weight:300; }
+    .about-text p strong { color:var(--sand); font-weight:500; }
+    .about-text p em { font-style:italic; color:rgba(250,246,239,.85); }
+    .about-text p:last-child { margin-bottom:0; }
+    .about-card { background:rgba(255,255,255,.04); border:1px solid rgba(201,168,124,.15); border-radius:3px; padding:2.8rem 2.4rem; position:relative; }
+    .about-card::before { content:'"'; font-family:'Playfair Display',serif; font-size:8rem; color:rgba(201,168,124,.08); position:absolute; top:-.8rem; left:1.4rem; line-height:1; }
+    .about-quote { font-family:'Playfair Display',serif; font-style:italic; font-size:1.3rem; line-height:1.6; color:var(--cream); margin-bottom:1.8rem; }
+    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+    .stat { border-top:1px solid rgba(201,168,124,.18); padding-top:1rem; }
+    .stat-num { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; color:var(--sand); line-height:1; margin-bottom:.3rem; }
+    .stat-label { font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(201,168,124,.5); }
+
+    /* GALLERY */
+    .gallery { background:var(--bg2); padding:5rem 3rem; }
+    .gallery-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:320px 320px; gap:.8rem; }
+    .gp { border-radius:2px; overflow:hidden; position:relative; }
+    .gp-1{background:radial-gradient(ellipse 80% 80% at 40% 35%,#c8a882,#6a3e20,#1e1008)}
+    .gp-2{background:radial-gradient(ellipse at 60% 40%,#d0b080,#7a4a28,#201408)}
+    .gp-3{background:radial-gradient(ellipse 90% 70% at 55% 50%,#e0c090,#9a6030,#2a1608)}
+    .gp-4{background:radial-gradient(ellipse at 35% 55%,#c0a070,#604018,#1a1008)}
+    .gp::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.68' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E"); opacity:.45; mix-blend-mode:overlay; z-index:1; }
+    .gp-label { position:absolute; bottom:.8rem; left:.9rem; z-index:2; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(250,246,239,.45); }
+    .gallery-note { margin-top:1.5rem; text-align:center; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
+
+    /* PACKAGES */
+    .packages { background:var(--cream); }
+    .packages-intro { max-width:520px; margin-bottom:3.5rem; }
+    .packages-intro p { margin-top:1rem; color:var(--muted); line-height:1.7; font-size:.95rem; }
+    .pkg-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; align-items:start; }
+    .pkg { border:1px solid rgba(160,103,58,.18); border-radius:3px; padding:2.4rem 2rem; background:var(--bg); position:relative; transition:border-color .25s,transform .25s,box-shadow .25s; }
+    .pkg:hover { border-color:var(--caramel); transform:translateY(-5px); box-shadow:0 12px 40px rgba(107,66,38,.1); }
+    .pkg.featured { background:var(--dark); border-color:var(--caramel); }
+    .pkg.featured .pkg-name,.pkg.featured .pkg-price,.pkg.featured .pkg-desc { color:var(--cream); }
+    .pkg.featured .pkg-items li { color:rgba(250,246,239,.65); }
+    .pkg.featured .pkg-items li::before { color:var(--sand); }
+    .pkg.featured .pkg-label { color:var(--sand); }
+    .pkg.featured .pkg-note { color:rgba(201,168,124,.5); }
+    .pkg.featured .pkg-divider { background:rgba(201,168,124,.18); }
+    .featured-badge { position:absolute; top:-1px; right:1.5rem; background:var(--caramel); color:var(--cream); font-size:.6rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; padding:.3rem .8rem; border-radius:0 0 3px 3px; }
+    .pkg-label { font-size:.65rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--caramel); margin-bottom:.5rem; }
+    .pkg-name { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:400; color:var(--dark); text-transform:uppercase; margin-bottom:1.2rem; }
+    .pkg-price { font-size:1.8rem; font-weight:300; color:var(--dark); margin-bottom:.3rem; }
+    .pkg-price span { font-size:.9rem; font-weight:400; }
+    .pkg-note { font-size:.75rem; color:var(--muted); margin-bottom:1.6rem; }
+    .pkg-divider { height:1px; background:rgba(160,103,58,.15); margin-bottom:1.4rem; }
+    .pkg-desc { font-size:.88rem; color:var(--muted); line-height:1.65; margin-bottom:1.4rem; }
+    .pkg-items { list-style:none; margin-bottom:1.8rem; }
+    .pkg-items li { font-size:.85rem; color:var(--muted); padding:.4rem 0; display:flex; align-items:flex-start; gap:.6rem; border-bottom:1px solid rgba(160,103,58,.09); }
+    .pkg-items li:last-child { border-bottom:none; }
+    .pkg-items li::before { content:'—'; color:var(--caramel); flex-shrink:0; }
+    .pkg-btn { display:block; text-align:center; text-decoration:none; font-size:.75rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:.85rem 1.4rem; border-radius:2px; transition:background .2s,color .2s,transform .15s; }
+    .pkg:not(.featured) .pkg-btn { border:1px solid rgba(107,66,38,.3); color:var(--coffee); }
+    .pkg:not(.featured) .pkg-btn:hover { background:var(--coffee); color:var(--cream); }
+    .pkg.featured .pkg-btn { background:var(--caramel); color:var(--cream); }
+    .pkg.featured .pkg-btn:hover { background:var(--sand); transform:translateY(-2px); }
+    .pkg-footer { margin-top:2.5rem; text-align:center; font-size:.8rem; color:var(--muted); }
+    .pkg-footer a { color:var(--caramel); text-decoration:none; }
+    .pkg-footer a:hover { text-decoration:underline; }
+
+    /* TESTIMONIALS */
+    .testimonials { background:var(--bg); }
+    .testimonials-header { max-width:480px; margin-bottom:3rem; }
+    .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .testi { background:var(--cream); border-radius:3px; padding:2.2rem; position:relative; border:1px solid rgba(160,103,58,.12); }
+    .testi::before { content:'"'; font-family:'Playfair Display',serif; font-size:5rem; color:rgba(160,103,58,.1); position:absolute; top:.5rem; left:1.2rem; line-height:1; }
+    .stars { font-size:.85rem; color:var(--caramel); letter-spacing:.2em; margin-bottom:1rem; }
+    .testi blockquote { font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; line-height:1.6; color:var(--dark); margin-bottom:1.4rem; }
+    .testi cite { font-size:.7rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--caramel); font-style:normal; }
+
+    /* FAQ */
+    .faq { background:var(--cream); }
+    .faq-header { max-width:520px; margin-bottom:3rem; }
+    .faq-list { max-width:720px; }
+    .faq-item { border-bottom:1px solid rgba(107,66,38,.15); }
+    .faq-q { width:100%; background:none; border:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; text-align:left; padding:1.4rem 0; font-family:'Inter',sans-serif; font-size:.95rem; font-weight:500; color:var(--dark); gap:1rem; transition:color .2s; }
+    .faq-q:hover { color:var(--coffee); }
+    .faq-icon { width:1.4rem; height:1.4rem; flex-shrink:0; border:1px solid rgba(107,66,38,.3); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--caramel); transition:transform .3s,background .2s,border-color .2s; }
+    .faq-item.open .faq-icon { transform:rotate(45deg); background:var(--caramel); color:var(--cream); border-color:var(--caramel); }
+    .faq-a { font-size:.9rem; color:var(--muted); line-height:1.75; max-height:0; overflow:hidden; transition:max-height .4s ease,padding .3s; }
+    .faq-item.open .faq-a { max-height:300px; padding-bottom:1.4rem; }
+
+    /* CTA */
+    .cta-final { background:var(--dark); padding:8rem 3rem; text-align:center; position:relative; overflow:hidden; }
+    .cta-final::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(160,103,58,.12) 0%,transparent 70%); }
+    .cta-final > * { position:relative; z-index:1; }
+    .cta-final .section-label { color:var(--sand); }
+    .cta-final h2 { color:var(--cream); margin-bottom:1rem; }
+    .cta-final p { color:var(--muted); max-width:44ch; margin:0 auto 2.8rem; line-height:1.7; }
+    .cta-final .btn-primary { margin:0 auto; }
+    .cta-instagram { display:block; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(122,106,88,.7); text-decoration:none; margin-top:1rem; transition:color .2s; }
+    .cta-instagram:hover { color:var(--sand); }
+
+    footer { background:#1a1008; padding:2.2rem 3rem; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(160,103,58,.12); }
+    .footer-logo { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--cream); text-decoration:none; }
+    .footer-logo span { color:var(--caramel); }
+    .footer-info { font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(122,106,88,.5); text-align:right; line-height:1.9; }
+
+    .float-wpp { position:fixed; bottom:1.8rem; right:1.8rem; z-index:200; background:var(--wpp); width:3.4rem; height:3.4rem; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(37,211,102,.3); text-decoration:none; transition:transform .2s; }
+    .float-wpp:hover { transform:scale(1.1); }
+
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:1000px){
+      .nav-links a:not(.nav-cta){display:none}
+      .pkg-grid{grid-template-columns:1fr;max-width:440px}
+      .testi-grid{grid-template-columns:1fr}
+      .about-inner{grid-template-columns:1fr;gap:3rem}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+      .gp-1,.gp-2,.gp-3,.gp-4{height:200px}
+    }
+    @media(max-width:640px){
+      nav{padding:1rem 1.4rem} section{padding:4rem 1.4rem}
+      .hero{padding-bottom:4rem} .hero-content{padding:0 1.4rem} h1{font-size:2.8rem}
+      footer{flex-direction:column;gap:.8rem;text-align:center;padding:2rem 1.4rem}
+      .footer-info{text-align:center}
+      .gallery-grid{grid-template-columns:1fr}
+      .gp-1,.gp-2,.gp-3,.gp-4{height:220px}
+    }
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Fotos por <span>Vallim</span></a>
+  <div class="nav-links">
+    <a href="#sobre">Quem sou eu</a>
+    <a href="#galeria">Portfólio</a>
+    <a href="#pacotes">Pacotes</a>
+    <a href="#faq">Dúvidas</a>
+    <a href="https://wa.me/5511981512260?text=Oi+Vallim%2C+vim+pelo+site!" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Mauá · Grande ABC · São Paulo</p>
+    <h1>Fotografia que<br/><em>toca antes</em><br/>de ser vista.</h1>
+    <p class="hero-sub">Casamentos, retratos e ensaios de casal com olhar espontâneo. Momentos reais, para sempre.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5511981512260?text=Oi+Vallim%2C+vim+pelo+site+e+quero+agendar!" class="btn-primary" target="_blank" rel="noopener">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.564 4.14 1.547 5.875L.057 23.986l6.247-1.638A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.015-1.376l-.36-.214-3.707.972.988-3.607-.235-.37A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+        Quero agendar
+      </a>
+      <a href="#galeria" class="btn-secondary">Ver portfólio</a>
+    </div>
+  </div>
+  <span class="hero-scroll">Role para descobrir</span>
+</section>
+
+<section class="about reveal" id="sobre">
+  <span class="section-label">Quem sou eu</span>
+  <div class="about-inner">
+    <div class="about-text">
+      <h2 style="margin-bottom:2rem;">Uma história que<br/><em>começa na dor</em><br/>e termina na luz.</h2>
+      <p>Me chamo <strong>Anderson</strong>, tenho 35 anos e sou nascido e criado em Mauá — a cidade onde vivo, trabalho e encontrei o meu propósito.</p>
+      <p>Sou casado e pai de uma filha incrível. Uma família que Deus colocou na minha vida e que me faz querer ser melhor todos os dias. É por eles que eu acordo cedo, carrego a câmera, e entrego o melhor de mim em cada sessão.</p>
+      <p>Há 5 anos, a fotografia se tornou muito mais do que uma profissão.</p>
+      <p><strong>Houve um tempo em que eu não conseguia me levantar da cama.</strong></p>
+      <p>A depressão não avisa. Ela simplesmente chega e vai apagando tudo — a vontade, a cor, o sentido. Por muito tempo, eu olhei pro mundo e não vi nada que valesse ser lembrado.</p>
+      <p><em>Então uma câmera apareceu na minha vida.</em></p>
+      <p>Não foi mágica. Foi processo. Mas pela primeira vez em muito tempo, eu comecei a prestar atenção. Na luz que dourava uma tarde comum. No olhar de alguém que acabou de ouvir o nome da pessoa que ama. No instante exato em que uma pessoa esquece que está sendo fotografada — e simplesmente existe.</p>
+      <p><strong>A fotografia não me salvou do nada. Ela me ensinou a enxergar de novo.</strong></p>
+      <p>Cinco anos olhando para noivos que tremem antes do altar, para pessoas que chegam inseguras e saem se vendo de outro jeito, para casais que redescobrem um ao outro na frente da câmera.</p>
+      <p>Eu não fotografo poses. Eu fotografo o que é real. E se tem uma coisa que aprendi nessa jornada, é que todo mundo carrega uma história que merece ser vista. <strong>A sua também merece.</strong></p>
+    </div>
+    <div>
+      <div class="about-card">
+        <p class="about-quote">"Eu não fotografo poses. Eu fotografo o que é real — porque sei o que é não se enxergar, e sei o que é uma foto mudar isso."</p>
+        <div class="about-stats">
+          <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Anos de experiência</div></div>
+          <div class="stat"><div class="stat-num">35</div><div class="stat-label">Anos de idade</div></div>
+          <div class="stat"><div class="stat-num">Mauá</div><div class="stat-label">Nascido e criado</div></div>
+          <div class="stat"><div class="stat-num">ABC</div><div class="stat-label">Região de atuação</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery reveal" id="galeria">
+  <span class="section-label">Portfólio</span>
+  <h2>Um recorte do trabalho</h2>
+  <div class="gallery-grid" style="margin-top:2.5rem">
+    <div class="gp gp-1"><span class="gp-label">Casamento</span></div>
+    <div class="gp gp-2"><span class="gp-label">Pré Wedding</span></div>
+    <div class="gp gp-3"><span class="gp-label">Ensaio Casal</span></div>
+    <div class="gp gp-4"><span class="gp-label">Individual</span></div>
+  </div>
+  <p class="gallery-note">Mais fotos em @fotosporvallim no Instagram</p>
+</section>
+
+<section class="packages reveal" id="pacotes">
+  <div class="packages-intro">
+    <span class="section-label">Pacotes & Investimento</span>
+    <h2>Escolha o que <em>faz sentido</em> pra você</h2>
+    <p>Cada pacote foi pensado para um momento diferente. Se tiver dúvidas sobre qual é o seu, me chama — a gente descobre juntos.</p>
+  </div>
+  <div class="pkg-grid">
+    <div class="pkg">
+      <div class="pkg-label">Ensaio Individual</div>
+      <div class="pkg-name">Retrato</div>
+      <div class="pkg-price"><span>a partir de</span> R$ 900</div>
+      <div class="pkg-note">Pagamento em até 4x</div>
+      <div class="pkg-divider"></div>
+      <p class="pkg-desc">Para quem quer se ver de um jeito que nunca se viu. Sem poses forçadas, sem direção engessada. Você do jeito que você é.</p>
+      <ul class="pkg-items">
+        <li>2h de sessão</li>
+        <li>80+ fotos editadas em alta resolução</li>
+        <li>Locação a combinar (indoor ou externo)</li>
+        <li>Entrega em até 10 dias</li>
+      </ul>
+      <a href="https://wa.me/5511981512260?text=Oi+Vallim%2C+tenho+interesse+no+pacote+Retrato!" class="pkg-btn" target="_blank" rel="noopener">Quero esse</a>
+    </div>
+    <div class="pkg featured">
+      <div class="featured-badge">Mais pedido</div>
+      <div class="pkg-label">Ensaio de Casal</div>
+      <div class="pkg-name">Casal</div>
+      <div class="pkg-price"><span>a partir de</span> R$ 1.300</div>
+      <div class="pkg-note">Pagamento em até 6x</div>
+      <div class="pkg-divider"></div>
+      <p class="pkg-desc">Para registrar a cumplicidade de dois — namorados, noivos ou quem simplesmente quer celebrar o amor do jeito mais real possível.</p>
+      <ul class="pkg-items">
+        <li>3h de sessão</li>
+        <li>100+ fotos editadas em alta resolução</li>
+        <li>Locação a combinar</li>
+        <li>Galeria online privada</li>
+        <li>Entrega em até 12 dias</li>
+      </ul>
+      <a href="https://wa.me/5511981512260?text=Oi+Vallim%2C+tenho+interesse+no+pacote+Casal!" class="pkg-btn" target="_blank" rel="noopener">Quero esse</a>
+    </div>
+    <div class="pkg">
+      <div class="pkg-label">Cobertura Completa</div>
+      <div class="pkg-name">Casamento</div>
+      <div class="pkg-price">Sob consulta</div>
+      <div class="pkg-note">Parcelamento disponível</div>
+      <div class="pkg-divider"></div>
+      <p class="pkg-desc">Cada detalhe, cada emoção, cada memória do dia mais importante da sua vida — registrados com cuidado e olhar espontâneo.</p>
+      <ul class="pkg-items">
+        <li>Cobertura completa do dia</li>
+        <li>400+ fotos editadas em alta resolução</li>
+        <li>Álbum digital incluso</li>
+        <li>2 fotógrafos (opcional)</li>
+        <li>Entrega em até 30 dias</li>
+      </ul>
+      <a href="https://wa.me/5511981512260?text=Oi+Vallim%2C+quero+um+or%C3%A7amento+para+meu+casamento!" class="pkg-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+  </div>
+  <p class="pkg-footer">Tem algo diferente em mente? <a href="https://wa.me/5511981512260?text=Oi+Vallim%2C+quero+um+pacote+personalizado!" target="_blank" rel="noopener">Me chama que a gente cria um pacote só pra você.</a></p>
+</section>
+
+<section class="testimonials reveal">
+  <div class="testimonials-header">
+    <span class="section-label">O que dizem</span>
+    <h2>Quem viveu, <em>conta</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Nunca imaginei me sentir tão eu mesma na frente de uma câmera. Vallim tem um jeito de criar conforto que simplesmente funciona."</blockquote>
+      <cite>Rafaela M. · Retrato Feminino</cite>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <blockquote>"As fotos do nosso casamento ficaram incríveis. Ele capturou momentos que nem percebemos estar acontecendo — e são os que mais amamos."</blockquote>
+      <cite>Camila & Pedro · Casamento</cite>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Fiz o ensaio de casal com meu namorado e foi uma das melhores experiências que tivemos juntos. As fotos contam exatamente quem a gente é."</blockquote>
+      <cite>Juliana R. · Ensaio de Casal</cite>
+    </div>
+  </div>
+</section>
+
+<section class="faq reveal" id="faq">
+  <div class="faq-header">
+    <span class="section-label">Dúvidas frequentes</span>
+    <h2>Perguntas que <em>quase todo mundo</em> faz</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">Como funciona o agendamento?<span class="faq-icon">+</span></button>
+      <div class="faq-a">É simples: me chama no WhatsApp, a gente conversa sobre o que você quer, alinha data, local e pacote — e está feito. Nada burocrático.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Preciso ter experiência com fotos?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Nenhuma. A maioria dos meus clientes nunca havia feito um ensaio antes. Meu trabalho é exatamente criar um ambiente onde você se sinta à vontade do jeito que você é.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Onde acontecem os ensaios?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Pode ser indoor ou externo — parques, ruas, espaços com história. A gente escolhe juntos o local que mais combina com você. Atendo em Mauá e toda a região do Grande ABC.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Em quanto tempo recebo as fotos?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Retratos e ensaios de casal: até 12 dias. Casamentos: até 30 dias. As fotos chegam em galeria online privada, em alta resolução, prontas para imprimir.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Qual a forma de pagamento?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Aceito Pix, transferência e cartão de crédito em até 4x. Para casamentos, trabalhamos com sinal para confirmação da data e o restante combinado em parcelas.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Você atende fora de Mauá?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Sim. Atendo toda a região do Grande ABC — Santo André, São Bernardo, São Caetano, Diadema, Ribeirão Pires, Rio Grande da Serra — e viagens mediante consulta.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final reveal">
+  <span class="section-label">Pronto para começar?</span>
+  <h2>Vamos criar algo <em>seu.</em></h2>
+  <p>Me conta o que você tem em mente. Eu cuido do resto.</p>
+  <a href="https://wa.me/5511981512260?text=Oi+Vallim%2C+vim+pelo+site+e+quero+agendar!" class="btn-primary" target="_blank" rel="noopener">
+    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.564 4.14 1.547 5.875L.057 23.986l6.247-1.638A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.015-1.376l-.36-.214-3.707.972.988-3.607-.235-.37A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+    Falar com Vallim no WhatsApp
+  </a>
+  <a href="https://instagram.com/fotosporvallim" class="cta-instagram" target="_blank" rel="noopener">ou me siga no @fotosporvallim</a>
+</section>
+
+<footer>
+  <a href="#" class="footer-logo">Fotos por <span>Vallim</span></a>
+  <div class="footer-info">
+    Mauá · São Paulo · Brasil<br/>
+    @fotosporvallim · (11) 98151-2260
+  </div>
+</footer>
+
+<a class="float-wpp" href="https://wa.me/5511981512260?text=Oi+Vallim%2C+vim+pelo+site!" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="22" height="22" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.564 4.14 1.547 5.875L.057 23.986l6.247-1.638A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.015-1.376l-.36-.214-3.707.972.988-3.607-.235-.37A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+</a>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.parentElement;
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+      if(!isOpen)item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
